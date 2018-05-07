@@ -68,5 +68,15 @@ final class CoreFunction
         foreach ($mocks as $mock) {
             uopz_unset_return($mock->getFunctionName());
         }
+
+        foreach ($mocks as $mock) {
+            $function = $mock->getFunctionName();
+            $arguments = $mock->getArguments();
+            $times = $mock->getExpectedCount();
+            $called = $mock->getCalledCount();
+            if ($times > $called) {
+                throw new ExpectationException("Function {$function}({$arguments}) should be called {$times} times but only called {$called} times");
+            }
+        }
     }
 }

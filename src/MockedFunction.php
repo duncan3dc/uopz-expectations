@@ -2,6 +2,8 @@
 
 namespace duncan3dc\Mock;
 
+use duncan3dc\Mock\Exceptions\ExpectationException;
+
 final class MockedFunction
 {
     /**
@@ -79,6 +81,50 @@ final class MockedFunction
 
 
     /**
+     * Allow this function to be called unlimited times or never at all.
+     *
+     * @return $this
+     */
+    public function zeroOrMoreTimes(): MockedFunction
+    {
+        return $this->times(-1);
+    }
+
+
+    /**
+     * Allow this function to be called exactly once.
+     *
+     * @return $this
+     */
+    public function once(): MockedFunction
+    {
+        return $this->times(1);
+    }
+
+
+    /**
+     * Allow this function to be called exactly twice.
+     *
+     * @return $this
+     */
+    public function twice(): MockedFunction
+    {
+        return $this->times(2);
+    }
+
+
+    /**
+     * Ensure this function is never called.
+     *
+     * @return $this
+     */
+    public function never(): MockedFunction
+    {
+        return $this->times(0);
+    }
+
+
+    /**
      * Set the arguments this function should be called with.
      *
      * @param mixed ...$values
@@ -114,6 +160,9 @@ final class MockedFunction
     public function call()
     {
         ++$this->called;
+        if ($this->times > -1 && $this->called > $this->times) {
+            throw new ExpectationException("Function {$this->name}({$this->arguments}) should be called {$this->times} times but called at least {$this->called} times");
+        }
 
         return $this->return;
     }
