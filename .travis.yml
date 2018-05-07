@@ -1,0 +1,37 @@
+language: php
+
+php:
+  - 7.1
+  - 7.2
+  - nightly
+
+matrix:
+  allow_failures:
+  - php: nightly
+
+env:
+  - COMPOSER_OPTS=""
+  - COMPOSER_OPTS="--prefer-lowest"
+
+install:
+  - pecl install uopz
+  - composer self-update --snapshot
+  - composer update $COMPOSER_OPTS
+
+script:
+  - vendor/bin/phpunit
+  - tests/lint.sh
+  - vendor/bin/composer-require-checker
+
+jobs:
+  include:
+    - stage: coverage
+      script:
+        - vendor/bin/phpunit --coverage-clover=clover.xml
+        - vendor/bin/php-coveralls
+
+git:
+  depth: 5
+
+dist: trusty
+sudo: false
