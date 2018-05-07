@@ -153,6 +153,47 @@ final class MockedFunction
 
 
     /**
+     * Check if the specified arguments are identical to the arguments this function expects.
+     *
+     * @param Arguments $arguments The arguments to check
+     *
+     * @return bool
+     */
+    public function matchArguments(Arguments $arguments): bool
+    {
+        return $this->arguments->equal($arguments);
+    }
+
+
+    /**
+     * Check if the specified arguments are acceptable for this function.
+     *
+     * @param Arguments $arguments The arguments to check
+     *
+     * @return bool
+     */
+    public function canAcceptArguments(Arguments $arguments): bool
+    {
+        return $this->arguments->canAccept($arguments);
+    }
+
+
+    /**
+     * Check if this function has more expectations to accept.
+     *
+     * @return bool
+     */
+    public function canCall(): bool
+    {
+        if ($this->times === -1) {
+            return true;
+        }
+
+        return ($this->called < $this->times);
+    }
+
+
+    /**
      * Call this function and get its return value.
      *
      * @return mixed

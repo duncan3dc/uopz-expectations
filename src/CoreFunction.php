@@ -2,6 +2,8 @@
 
 namespace duncan3dc\Mock;
 
+use duncan3dc\Mock\Exceptions\ExpectationException;
+use function array_filter;
 use function uopz_set_return;
 use function uopz_unset_return;
 
@@ -47,10 +49,44 @@ final class CoreFunction
     {
         $mocks = self::$mocks;
 
+        $mocks = array_filter($mocks, function (MockedFunction $mock) use ($function) {
+            return $mock->getFunctionName() === $function;
+        });
+
+        # First try functions that expect the exact arguments, and have expectations that haven't been called yet
         foreach ($mocks as $mock) {
-            if ($mock->getFunctionName() === $function) {
-                return $mock->call($arguments);
+            if ($mock->matchArguments($arguments)) {
+                if ($mock->canCall()) {
+                    return $mock->call();
+                }
             }
+        }
+
+        # Then try functions that expect any arguments, and have expectations that haven't been called yet
+        foreach ($mocks as $mock) {
+            if ($mock->canAcceptArguments($arguments)) {
+                if ($mock->canCall()) {
+                    return $mock->call();
+                }
+            }
+        }
+
+        # Now try functions that expect the exact arguments (so we can give an accurate error message)
+        foreach ($mocks as $mock) {
+            if ($mock->matchArguments($arguments)) {
+                return $mock->call();
+            }
+        }
+
+        # Finally try functions that expect any arguments (just so we can throw an error as there are no expectations left)
+        foreach ($mocks as $mock) {
+            if ($mock->canAcceptArguments($arguments)) {
+                return $mock->call();
+            }
+        }
+
+        if (count($mocks) > 0) {
+            throw new ExpectationException("Unexpected argument list for {$function}()");
         }
     }
 

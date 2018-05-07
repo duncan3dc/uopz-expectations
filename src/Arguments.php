@@ -42,6 +42,36 @@ final class Arguments
 
 
     /**
+     * Check if the specified arguments are identical to the expected arguments.
+     *
+     * @param self $arguments The arguments to check
+     *
+     * @return bool
+     */
+    public function equal(self $arguments): bool
+    {
+        return $this->values === $arguments->getValues();
+    }
+
+
+    /**
+     * Check if the specified arguments are acceptable as a match for the expected arguments.
+     *
+     * @param self $arguments The arguments to check
+     *
+     * @return bool
+     */
+    public function canAccept(self $arguments): bool
+    {
+        if ($this->values === null) {
+            return true;
+        }
+
+        return $this->equal($arguments);
+    }
+
+
+    /**
      * Create a user friendly version of the arguments.
      *
      * @return string
