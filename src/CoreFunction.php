@@ -85,9 +85,7 @@ final class CoreFunction
             }
         }
 
-        if (count($mocks) > 0) {
-            throw new ExpectationException("Unexpected argument list for {$function}()");
-        }
+        throw new ExpectationException("Unexpected argument list for {$function}({$arguments})");
     }
 
 
