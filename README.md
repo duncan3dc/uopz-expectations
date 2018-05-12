@@ -4,9 +4,9 @@ Mock core functions and set up expectations similar to Mockery.
 Full documentation is available at http://duncan3dc.github.io/uopz-expectations/  
 PHPDoc API documentation is also available at [http://duncan3dc.github.io/uopz-expectations/api/](http://duncan3dc.github.io/uopz-expectations/api/namespaces/duncan3dc.Mock.html)  
 
-[![Latest Version](https://poser.pugx.org/duncan3dc/uopz-expectations/version.svg)](https://packagist.org/packages/duncan3dc/uopz-expectations)
-[![Build Status](https://travis-ci.org/duncan3dc/uopz-expectations.svg?branch=master)](https://travis-ci.org/duncan3dc/uopz-expectations)
-[![Coverage Status](https://coveralls.io/repos/github/duncan3dc/uopz-expectations/badge.svg)](https://coveralls.io/github/duncan3dc/uopz-expectations)
+[![release](https://poser.pugx.org/duncan3dc/uopz-expectations/version.svg)](https://packagist.org/packages/duncan3dc/uopz-expectations)
+[![build](https://travis-ci.org/duncan3dc/uopz-expectations.svg?branch=master)](https://travis-ci.org/duncan3dc/uopz-expectations)
+[![coverage](https://codecov.io/gh/duncan3dc/uopz-expectations/graph/badge.svg)](https://codecov.io/gh/duncan3dc/uopz-expectations)
 
 
 ## Introduction
