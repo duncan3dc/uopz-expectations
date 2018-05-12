@@ -23,7 +23,7 @@ The recommended method of installing this library is via [Composer](//getcompose
 Run the following command from your project root:
 
 ```bash
-$ composer require duncan3dc/uopz-expectations
+$ composer require --dev duncan3dc/uopz-expectations
 ```
 
 
