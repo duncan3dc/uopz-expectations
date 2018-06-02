@@ -33,9 +33,9 @@ final class Arguments
     /**
      * Get the values these arguments represent.
      *
-     * @return array
+     * @return array|null
      */
-    public function getValues(): array
+    public function getValues(): ?array
     {
         return $this->values;
     }
