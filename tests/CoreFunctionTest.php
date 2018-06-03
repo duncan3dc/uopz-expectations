@@ -11,21 +11,21 @@ class CoreFunctionTest extends TestCase
 
     public function testClose()
     {
-        CoreFunction::mock("time")->andReturn(123);
-        $this->assertSame(123, time());
+        CoreFunction::mock("abc")->andReturn(123);
+        $this->assertSame(123, abc("xyz"));
 
         CoreFunction::close();
-        $this->assertNotSame(123, time());
+        $this->assertSame("xyz", abc("xyz"));
     }
 
 
     public function testUnexpectedArgumentList()
     {
-        CoreFunction::mock("time")->with(777)->andReturn(77777);
-        $this->assertSame(77777, time(777));
+        CoreFunction::mock("abc")->with(777)->andReturn(77777);
+        $this->assertSame(77777, abc(777));
 
         $this->expectException(ExpectationException::class);
-        $this->expectExceptionMessage("Unexpected argument list for time(88888)");
-        time(88888);
+        $this->expectExceptionMessage("Unexpected argument list for abc(88888)");
+        abc(88888);
     }
 }
