@@ -2,6 +2,8 @@
 
 namespace duncan3dc\Mock;
 
+use Mockery\Matcher\MatcherAbstract;
+use function count;
 use function get_class;
 use function is_array;
 use function is_bool;
@@ -67,7 +69,34 @@ final class Arguments
             return true;
         }
 
-        return $this->equal($arguments);
+        if ($this->equal($arguments)) {
+            return true;
+        }
+
+        $values = $arguments->getValues();
+
+        if (count($this->values) !== count($values)) {
+            return false;
+        }
+
+        foreach ($values as $key => $actual) {
+            $expected = $this->values[$key];
+
+            if ($expected === $actual) {
+                continue;
+            }
+
+            if ($expected instanceof MatcherAbstract) {
+                if ($expected->match($actual)) {
+                    continue;
+                }
+            }
+
+            # If we couldn't find a match for this argument then give up
+            return false;
+        }
+
+        return true;
     }
 
 
@@ -120,6 +149,11 @@ final class Arguments
 
             if (is_array($value)) {
                 $string .= "array";
+                continue;
+            }
+
+            if ($value instanceof MatcherAbstract) {
+                $string .= (string) $value;
                 continue;
             }
 

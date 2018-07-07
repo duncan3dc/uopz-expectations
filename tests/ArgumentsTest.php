@@ -110,4 +110,13 @@ class ArgumentsTest extends TestCase
         $result = (string) $arguments;
         $this->assertSame("7, '8', array, DateTime", $result);
     }
+
+
+    public function testMatcher()
+    {
+        $input = [7, \Mockery::any(), 9];
+        $arguments = new Arguments($input);
+        $result = (string) $arguments;
+        $this->assertSame("7, <Any>, 9", $result);
+    }
 }
