@@ -28,10 +28,9 @@ final class CoreFunction
 
         self::$mocks[] = $mock;
 
-        uopz_set_return($function, function (...$values) use ($function) {
-            $arguments = new Arguments($values);
-            return CoreFunction::call($function, $arguments);
-        }, true);
+        $closure = new ClosureGenerator($function);
+
+        uopz_set_return($function, $closure->generate(), true);
 
         return $mock;
     }
