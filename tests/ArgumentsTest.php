@@ -8,6 +8,12 @@ use PHPUnit\Framework\TestCase;
 class ArgumentsTest extends TestCase
 {
 
+    public function tearDown()
+    {
+        uopz_unset_return("is_string");
+    }
+
+
     public function testEmpty()
     {
         $arguments = new Arguments;
@@ -130,5 +136,16 @@ class ArgumentsTest extends TestCase
         $arguments = new Arguments($input);
         $result = (string) $arguments;
         $this->assertSame("7, <Any>, 9", $result);
+    }
+
+
+    public function testUnknown()
+    {
+        uopz_set_return("is_string", false);
+
+        $input = [1, "two", 3];
+        $arguments = new Arguments($input);
+        $result = (string) $arguments;
+        $this->assertSame("1, UNKNOWN, 3", $result);
     }
 }
