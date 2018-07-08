@@ -18,7 +18,8 @@ class ArgumentsTest extends TestCase
 
     public function testString()
     {
-        $arguments = new Arguments(["1"]);
+        $input = ["1"];
+        $arguments = new Arguments($input);
         $result = (string) $arguments;
         $this->assertSame("'1'", $result);
     }
@@ -26,7 +27,8 @@ class ArgumentsTest extends TestCase
 
     public function testStringEllipsis()
     {
-        $arguments = new Arguments(["12345678901234567890"]);
+        $input = ["12345678901234567890"];
+        $arguments = new Arguments($input);
         $result = (string) $arguments;
         $this->assertSame("'1234567890...'", $result);
     }
@@ -34,7 +36,8 @@ class ArgumentsTest extends TestCase
 
     public function testInt()
     {
-        $arguments = new Arguments([77]);
+        $input = [77];
+        $arguments = new Arguments($input);
         $result = (string) $arguments;
         $this->assertSame("77", $result);
     }
@@ -42,7 +45,8 @@ class ArgumentsTest extends TestCase
 
     public function testIntEllipsis()
     {
-        $arguments = new Arguments([123456789]);
+        $input = [123456789];
+        $arguments = new Arguments($input);
         $result = (string) $arguments;
         $this->assertSame("12345...", $result);
     }
@@ -50,7 +54,8 @@ class ArgumentsTest extends TestCase
 
     public function testFloat()
     {
-        $arguments = new Arguments([3.14]);
+        $input = [3.14];
+        $arguments = new Arguments($input);
         $result = (string) $arguments;
         $this->assertSame("3.14", $result);
     }
@@ -58,7 +63,8 @@ class ArgumentsTest extends TestCase
 
     public function testFloatEllipsis()
     {
-        $arguments = new Arguments([123.45678]);
+        $input = [123.45678];
+        $arguments = new Arguments($input);
         $result = (string) $arguments;
         $this->assertSame("123.4...", $result);
     }
@@ -66,7 +72,8 @@ class ArgumentsTest extends TestCase
 
     public function testTrue()
     {
-        $arguments = new Arguments([true]);
+        $input = [true];
+        $arguments = new Arguments($input);
         $result = (string) $arguments;
         $this->assertSame("true", $result);
     }
@@ -74,7 +81,8 @@ class ArgumentsTest extends TestCase
 
     public function testFalse()
     {
-        $arguments = new Arguments([false]);
+        $input = [false];
+        $arguments = new Arguments($input);
         $result = (string) $arguments;
         $this->assertSame("false", $result);
     }
@@ -82,7 +90,8 @@ class ArgumentsTest extends TestCase
 
     public function testNull()
     {
-        $arguments = new Arguments([null]);
+        $input = [null];
+        $arguments = new Arguments($input);
         $result = (string) $arguments;
         $this->assertSame("null", $result);
     }
@@ -90,7 +99,8 @@ class ArgumentsTest extends TestCase
 
     public function testArray()
     {
-        $arguments = new Arguments([[9]]);
+        $input = [[9]];
+        $arguments = new Arguments($input);
         $result = (string) $arguments;
         $this->assertSame("array", $result);
     }
@@ -98,7 +108,8 @@ class ArgumentsTest extends TestCase
 
     public function testObject()
     {
-        $arguments = new Arguments([new \DateTime]);
+        $input = [new \DateTime];
+        $arguments = new Arguments($input);
         $result = (string) $arguments;
         $this->assertSame("DateTime", $result);
     }
@@ -106,7 +117,8 @@ class ArgumentsTest extends TestCase
 
     public function testMultiple()
     {
-        $arguments = new Arguments([7, "8", [], new \DateTime]);
+        $input = [7, "8", [], new \DateTime];
+        $arguments = new Arguments($input);
         $result = (string) $arguments;
         $this->assertSame("7, '8', array, DateTime", $result);
     }

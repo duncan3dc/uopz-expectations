@@ -26,7 +26,7 @@ final class Arguments
      *
      * @param array $values The arguments this instance represents.
      */
-    public function __construct(array $values = null)
+    public function __construct(array &$values = null)
     {
         $this->values = $values;
     }
@@ -40,6 +40,17 @@ final class Arguments
     public function getValues(): ?array
     {
         return $this->values;
+    }
+
+
+    /**
+     * Update the value of one of the arguments.
+     *
+     * @return void
+     */
+    public function setValue(int $index, $value): void
+    {
+        $this->values[$index] = $value;
     }
 
 

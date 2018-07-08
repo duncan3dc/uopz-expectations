@@ -56,7 +56,7 @@ final class CoreFunction
         foreach ($mocks as $mock) {
             if ($mock->matchArguments($arguments)) {
                 if ($mock->canCall()) {
-                    return $mock->call();
+                    return $mock->call($arguments);
                 }
             }
         }
@@ -65,7 +65,7 @@ final class CoreFunction
         foreach ($mocks as $mock) {
             if ($mock->canAcceptArguments($arguments)) {
                 if ($mock->canCall()) {
-                    return $mock->call();
+                    return $mock->call($arguments);
                 }
             }
         }
@@ -73,14 +73,14 @@ final class CoreFunction
         # Now try functions that expect the exact arguments (so we can give an accurate error message)
         foreach ($mocks as $mock) {
             if ($mock->matchArguments($arguments)) {
-                return $mock->call();
+                return $mock->call($arguments);
             }
         }
 
         # Finally try functions that expect any arguments (just so we can throw an error as there are no expectations left)
         foreach ($mocks as $mock) {
             if ($mock->canAcceptArguments($arguments)) {
-                return $mock->call();
+                return $mock->call($arguments);
             }
         }
 

@@ -42,6 +42,10 @@ class ClosureGenerator
                 $parameters .=  ",";
             }
 
+            if ($parameter->isPassedByReference()) {
+                $code .= "&";
+                $parameters .= "&";
+            }
             $code .= "\$" . $parameter->getName();
             $parameters .= "\$" . $parameter->getName();
 

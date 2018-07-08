@@ -3,6 +3,7 @@
 namespace duncan3dc\Mock;
 
 use duncan3dc\Mock\Exceptions\ExpectationException;
+use Mockery\Matcher\MatcherAbstract;
 
 final class MockedFunction
 {
@@ -198,11 +199,25 @@ final class MockedFunction
      *
      * @return mixed
      */
-    public function call()
+    public function call(Arguments $values)
     {
         ++$this->called;
         if ($this->times > -1 && $this->called > $this->times) {
             throw new ExpectationException("Function {$this->name}({$this->arguments}) should be called {$this->times} times but called at least {$this->called} times");
+        }
+
+        $matchers = $this->arguments->getValues();
+
+        if ($matchers === null) {
+            return $this->return;
+        }
+
+        foreach ($matchers as $index => $matcher) {
+            if ($matcher instanceof MatcherAbstract) {
+                $value = $values->getValues()[$index];
+                $matcher->match($value);
+                $values->setValue($index, $value);
+            }
         }
 
         return $this->return;
