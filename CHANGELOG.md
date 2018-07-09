@@ -5,7 +5,16 @@ Changelog
 
 --------
 
-## 0.1.1 - 2018-05-08
+## 0.2.0 - 2018-07-09
+
+### Added
+
+* [CoreFunction] Add support for using mockery matchers.
+* [CoreFunction] Add support for passing parameters as references.
+
+--------
+
+## 0.1.0 - 2018-05-08
 
 ### Added
 
