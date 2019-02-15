@@ -26,25 +26,20 @@ class MatcherArgumentsTest extends TestCase
     }
 
 
-    public function testDefaultTooMany(): void
+    public function testDefaultMany(): void
     {
         CoreFunction::mock("abc")->with(\Mockery::any())->andReturn(777);
         $this->assertSame(777, abc("seven"));
-
-        $this->expectException(ExpectationException::class);
-        $this->expectExceptionMessage("Function abc(<Any>) should be called 1 times but called at least 2 times");
-        abc("eight");
+        $this->assertSame(777, abc("eight"));
+        $this->assertSame(777, abc("nine"));
     }
 
 
-    public function testDefaultNotEnough(): void
+    public function testDefaultZero(): void
     {
         CoreFunction::mock("abc")->with(\Mockery::any())->andReturn(777);
         CoreFunction::mock("abc")->with("-8")->andReturn(888);
         $this->assertSame(888, abc("-8"));
-
-        $this->expectException(ExpectationException::class);
-        $this->expectExceptionMessage("Function abc(<Any>) should be called 1 times but only called 0 times");
         CoreFunction::close();
     }
 

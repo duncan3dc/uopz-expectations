@@ -23,24 +23,20 @@ class NoArgumentsTest extends TestCase
     }
 
 
-    public function testDefaultTooMany(): void
+    public function testDefaultMany(): void
     {
         CoreFunction::mock("time")->with()->andReturn(777);
         $this->assertSame(777, time());
-
-        $this->expectException(ExpectationException::class);
-        $this->expectExceptionMessage("Function time() should be called 1 times but called at least 2 times");
-        time();
+        $this->assertSame(777, time());
+        $this->assertSame(777, time());
     }
 
 
-    public function testDefaultNotEnough(): void
+    public function testDefaultZero(): void
     {
         CoreFunction::mock("time")->with()->andReturn(777);
-
-        $this->expectException(ExpectationException::class);
-        $this->expectExceptionMessage("Function time() should be called 1 times but only called 0 times");
         CoreFunction::close();
+        $this->assertTrue(true);
     }
 
 

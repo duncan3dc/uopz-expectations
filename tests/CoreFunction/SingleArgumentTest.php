@@ -23,24 +23,21 @@ class SingleArgumentTest extends TestCase
     }
 
 
-    public function testDefaultTooMany(): void
+    public function testDefaultMany(): void
     {
         CoreFunction::mock("abc")->with("two")->andReturn(777);
         $this->assertSame(777, abc("two"));
-
-        $this->expectException(ExpectationException::class);
-        $this->expectExceptionMessage("Function abc('two') should be called 1 times but called at least 2 times");
-        abc("two");
+        $this->assertSame(777, abc("two"));
+        $this->assertSame(777, abc("two"));
+        $this->assertSame(777, abc("two"));
     }
 
 
-    public function testDefaultNotEnough(): void
+    public function testDefaultZero(): void
     {
         CoreFunction::mock("abc")->with("two")->andReturn(777);
-
-        $this->expectException(ExpectationException::class);
-        $this->expectExceptionMessage("Function abc('two') should be called 1 times but only called 0 times");
         CoreFunction::close();
+        $this->assertTrue(true);
     }
 
 

@@ -15,7 +15,7 @@ final class MockedFunction
     /**
      * @var int $times How many times this function should be called.
      */
-    private $times = 1;
+    private $times = -1;
 
     /**
      * @var Arguments $arguments The arguments this function is called with.
