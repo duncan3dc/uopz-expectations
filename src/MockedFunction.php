@@ -41,7 +41,7 @@ final class MockedFunction
     public function __construct(string $name)
     {
         $this->name = $name;
-        $this->arguments = new Arguments;
+        $this->arguments = new Arguments();
     }
 
 

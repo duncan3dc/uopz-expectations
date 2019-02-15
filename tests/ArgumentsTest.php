@@ -16,7 +16,7 @@ class ArgumentsTest extends TestCase
 
     public function testEmpty(): void
     {
-        $arguments = new Arguments;
+        $arguments = new Arguments();
         $result = (string) $arguments;
         $this->assertSame("", $result);
     }
@@ -114,7 +114,7 @@ class ArgumentsTest extends TestCase
 
     public function testObject(): void
     {
-        $input = [new \DateTime];
+        $input = [new \DateTime()];
         $arguments = new Arguments($input);
         $result = (string) $arguments;
         $this->assertSame("DateTime", $result);
@@ -123,7 +123,7 @@ class ArgumentsTest extends TestCase
 
     public function testMultiple(): void
     {
-        $input = [7, "8", [], new \DateTime];
+        $input = [7, "8", [], new \DateTime()];
         $arguments = new Arguments($input);
         $result = (string) $arguments;
         $this->assertSame("7, '8', array, DateTime", $result);
