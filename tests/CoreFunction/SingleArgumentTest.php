@@ -10,20 +10,20 @@ use function abc;
 class SingleArgumentTest extends TestCase
 {
 
-    public function tearDown()
+    public function tearDown(): void
     {
         CoreFunction::close();
     }
 
 
-    public function testDefault()
+    public function testDefault(): void
     {
         CoreFunction::mock("abc")->with("one")->andReturn(777);
         $this->assertSame(777, abc("one"));
     }
 
 
-    public function testDefaultTooMany()
+    public function testDefaultTooMany(): void
     {
         CoreFunction::mock("abc")->with("two")->andReturn(777);
         $this->assertSame(777, abc("two"));
@@ -34,7 +34,7 @@ class SingleArgumentTest extends TestCase
     }
 
 
-    public function testDefaultNotEnough()
+    public function testDefaultNotEnough(): void
     {
         CoreFunction::mock("abc")->with("two")->andReturn(777);
 
@@ -44,21 +44,21 @@ class SingleArgumentTest extends TestCase
     }
 
 
-    public function testZero()
+    public function testZero(): void
     {
         CoreFunction::mock("abc")->zeroOrMoreTimes()->with(88)->andReturn(777);
         $this->assertTrue(true);
     }
 
 
-    public function testZeroOrMore()
+    public function testZeroOrMore(): void
     {
         CoreFunction::mock("abc")->zeroOrMoreTimes()->with(88)->andReturn(777);
         $this->assertSame(777, abc(88));
     }
 
 
-    public function testZeroOrMany()
+    public function testZeroOrMany(): void
     {
         CoreFunction::mock("abc")->zeroOrMoreTimes()->with(false)->andReturn(777);
         $this->assertSame(777, abc(false));
@@ -68,14 +68,14 @@ class SingleArgumentTest extends TestCase
     }
 
 
-    public function testOnce()
+    public function testOnce(): void
     {
         CoreFunction::mock("abc")->once()->with(88)->andReturn(777);
         $this->assertSame(777, abc(88));
     }
 
 
-    public function testOnceTooMany()
+    public function testOnceTooMany(): void
     {
         CoreFunction::mock("abc")->once()->with(false)->andReturn(777);
         $this->assertSame(777, abc(false));
@@ -86,7 +86,7 @@ class SingleArgumentTest extends TestCase
     }
 
 
-    public function testOnceNotEnough()
+    public function testOnceNotEnough(): void
     {
         CoreFunction::mock("abc")->once()->with(0)->andReturn(777);
 
@@ -96,7 +96,7 @@ class SingleArgumentTest extends TestCase
     }
 
 
-    public function testTwice()
+    public function testTwice(): void
     {
         CoreFunction::mock("abc")->twice()->with([])->andReturn(777);
         $this->assertSame(777, abc([]));
@@ -104,7 +104,7 @@ class SingleArgumentTest extends TestCase
     }
 
 
-    public function testTwiceTooMany()
+    public function testTwiceTooMany(): void
     {
         CoreFunction::mock("abc")->twice()->with(-1)->andReturn(777);
         $this->assertSame(777, abc(-1));
@@ -116,7 +116,7 @@ class SingleArgumentTest extends TestCase
     }
 
 
-    public function testTwiceNotEnough()
+    public function testTwiceNotEnough(): void
     {
         CoreFunction::mock("abc")->twice()->with("")->andReturn(777);
         $this->assertSame(777, abc(""));
@@ -127,7 +127,7 @@ class SingleArgumentTest extends TestCase
     }
 
 
-    public function testNever()
+    public function testNever(): void
     {
         CoreFunction::mock("abc")->never()->with(null)->andReturn(777);
         CoreFunction::close();
@@ -135,7 +135,7 @@ class SingleArgumentTest extends TestCase
     }
 
 
-    public function testNeverTooMany()
+    public function testNeverTooMany(): void
     {
         CoreFunction::mock("abc")->never()->with(true)->andReturn(777);
 

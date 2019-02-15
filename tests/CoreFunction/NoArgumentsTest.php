@@ -10,20 +10,20 @@ use function time;
 class NoArgumentsTest extends TestCase
 {
 
-    public function tearDown()
+    public function tearDown(): void
     {
         CoreFunction::close();
     }
 
 
-    public function testDefault()
+    public function testDefault(): void
     {
         CoreFunction::mock("time")->with()->andReturn(777);
         $this->assertSame(777, time());
     }
 
 
-    public function testDefaultTooMany()
+    public function testDefaultTooMany(): void
     {
         CoreFunction::mock("time")->with()->andReturn(777);
         $this->assertSame(777, time());
@@ -34,7 +34,7 @@ class NoArgumentsTest extends TestCase
     }
 
 
-    public function testDefaultNotEnough()
+    public function testDefaultNotEnough(): void
     {
         CoreFunction::mock("time")->with()->andReturn(777);
 
@@ -44,21 +44,21 @@ class NoArgumentsTest extends TestCase
     }
 
 
-    public function testZero()
+    public function testZero(): void
     {
         CoreFunction::mock("time")->zeroOrMoreTimes()->with()->andReturn(777);
         $this->assertTrue(true);
     }
 
 
-    public function testZeroOrMore()
+    public function testZeroOrMore(): void
     {
         CoreFunction::mock("time")->zeroOrMoreTimes()->with()->andReturn(777);
         $this->assertSame(777, time());
     }
 
 
-    public function testZeroOrMany()
+    public function testZeroOrMany(): void
     {
         CoreFunction::mock("time")->zeroOrMoreTimes()->with()->andReturn(777);
         $this->assertSame(777, time());
@@ -68,14 +68,14 @@ class NoArgumentsTest extends TestCase
     }
 
 
-    public function testOnce()
+    public function testOnce(): void
     {
         CoreFunction::mock("time")->once()->with()->andReturn(777);
         $this->assertSame(777, time());
     }
 
 
-    public function testOnceTooMany()
+    public function testOnceTooMany(): void
     {
         CoreFunction::mock("time")->once()->with()->andReturn(777);
         $this->assertSame(777, time());
@@ -86,7 +86,7 @@ class NoArgumentsTest extends TestCase
     }
 
 
-    public function testOnceNotEnough()
+    public function testOnceNotEnough(): void
     {
         CoreFunction::mock("time")->once()->with()->andReturn(777);
 
@@ -96,7 +96,7 @@ class NoArgumentsTest extends TestCase
     }
 
 
-    public function testTwice()
+    public function testTwice(): void
     {
         CoreFunction::mock("time")->twice()->with()->andReturn(777);
         $this->assertSame(777, time());
@@ -104,7 +104,7 @@ class NoArgumentsTest extends TestCase
     }
 
 
-    public function testTwiceTooMany()
+    public function testTwiceTooMany(): void
     {
         CoreFunction::mock("time")->twice()->with()->andReturn(777);
         $this->assertSame(777, time());
@@ -116,7 +116,7 @@ class NoArgumentsTest extends TestCase
     }
 
 
-    public function testTwiceNotEnough()
+    public function testTwiceNotEnough(): void
     {
         CoreFunction::mock("time")->twice()->with()->andReturn(777);
         $this->assertSame(777, time());
@@ -127,7 +127,7 @@ class NoArgumentsTest extends TestCase
     }
 
 
-    public function testNever()
+    public function testNever(): void
     {
         CoreFunction::mock("time")->never()->with()->andReturn(777);
         CoreFunction::close();
@@ -135,7 +135,7 @@ class NoArgumentsTest extends TestCase
     }
 
 
-    public function testNeverTooMany()
+    public function testNeverTooMany(): void
     {
         CoreFunction::mock("time")->never()->with()->andReturn(777);
 

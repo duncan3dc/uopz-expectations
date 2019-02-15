@@ -8,13 +8,13 @@ use PHPUnit\Framework\TestCase;
 class ArgumentsTest extends TestCase
 {
 
-    public function tearDown()
+    public function tearDown(): void
     {
         uopz_unset_return("is_string");
     }
 
 
-    public function testEmpty()
+    public function testEmpty(): void
     {
         $arguments = new Arguments;
         $result = (string) $arguments;
@@ -22,7 +22,7 @@ class ArgumentsTest extends TestCase
     }
 
 
-    public function testString()
+    public function testString(): void
     {
         $input = ["1"];
         $arguments = new Arguments($input);
@@ -31,7 +31,7 @@ class ArgumentsTest extends TestCase
     }
 
 
-    public function testStringEllipsis()
+    public function testStringEllipsis(): void
     {
         $input = ["12345678901234567890"];
         $arguments = new Arguments($input);
@@ -40,7 +40,7 @@ class ArgumentsTest extends TestCase
     }
 
 
-    public function testInt()
+    public function testInt(): void
     {
         $input = [77];
         $arguments = new Arguments($input);
@@ -49,7 +49,7 @@ class ArgumentsTest extends TestCase
     }
 
 
-    public function testIntEllipsis()
+    public function testIntEllipsis(): void
     {
         $input = [123456789];
         $arguments = new Arguments($input);
@@ -58,7 +58,7 @@ class ArgumentsTest extends TestCase
     }
 
 
-    public function testFloat()
+    public function testFloat(): void
     {
         $input = [3.14];
         $arguments = new Arguments($input);
@@ -67,7 +67,7 @@ class ArgumentsTest extends TestCase
     }
 
 
-    public function testFloatEllipsis()
+    public function testFloatEllipsis(): void
     {
         $input = [123.45678];
         $arguments = new Arguments($input);
@@ -76,7 +76,7 @@ class ArgumentsTest extends TestCase
     }
 
 
-    public function testTrue()
+    public function testTrue(): void
     {
         $input = [true];
         $arguments = new Arguments($input);
@@ -85,7 +85,7 @@ class ArgumentsTest extends TestCase
     }
 
 
-    public function testFalse()
+    public function testFalse(): void
     {
         $input = [false];
         $arguments = new Arguments($input);
@@ -94,7 +94,7 @@ class ArgumentsTest extends TestCase
     }
 
 
-    public function testNull()
+    public function testNull(): void
     {
         $input = [null];
         $arguments = new Arguments($input);
@@ -103,7 +103,7 @@ class ArgumentsTest extends TestCase
     }
 
 
-    public function testArray()
+    public function testArray(): void
     {
         $input = [[9]];
         $arguments = new Arguments($input);
@@ -112,7 +112,7 @@ class ArgumentsTest extends TestCase
     }
 
 
-    public function testObject()
+    public function testObject(): void
     {
         $input = [new \DateTime];
         $arguments = new Arguments($input);
@@ -121,7 +121,7 @@ class ArgumentsTest extends TestCase
     }
 
 
-    public function testMultiple()
+    public function testMultiple(): void
     {
         $input = [7, "8", [], new \DateTime];
         $arguments = new Arguments($input);
@@ -130,7 +130,7 @@ class ArgumentsTest extends TestCase
     }
 
 
-    public function testMatcher()
+    public function testMatcher(): void
     {
         $input = [7, \Mockery::any(), 9];
         $arguments = new Arguments($input);
@@ -139,7 +139,7 @@ class ArgumentsTest extends TestCase
     }
 
 
-    public function testUnknown()
+    public function testUnknown(): void
     {
         uopz_set_return("is_string", false);
 

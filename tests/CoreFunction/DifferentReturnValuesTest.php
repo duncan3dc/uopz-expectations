@@ -10,13 +10,13 @@ use function abc;
 class DifferentReturnValuesTest extends TestCase
 {
 
-    public function tearDown()
+    public function tearDown(): void
     {
         CoreFunction::close();
     }
 
 
-    public function testDefault()
+    public function testDefault(): void
     {
         CoreFunction::mock("abc")->with("one")->andReturn(777);
         CoreFunction::mock("abc")->with("one")->andReturn(888);
@@ -26,7 +26,7 @@ class DifferentReturnValuesTest extends TestCase
     }
 
 
-    public function testDefaultTooMany()
+    public function testDefaultTooMany(): void
     {
         CoreFunction::mock("abc")->with("two")->andReturn(777);
         CoreFunction::mock("abc")->with("two")->andReturn(888);
@@ -39,7 +39,7 @@ class DifferentReturnValuesTest extends TestCase
     }
 
 
-    public function testDefaultNotEnough()
+    public function testDefaultNotEnough(): void
     {
         CoreFunction::mock("abc")->with("two")->andReturn(777);
         CoreFunction::mock("abc")->with("two")->andReturn(888);
@@ -51,7 +51,7 @@ class DifferentReturnValuesTest extends TestCase
     }
 
 
-    public function testZeroOrMoreTimes()
+    public function testZeroOrMoreTimes(): void
     {
         CoreFunction::mock("abc")->zeroOrMoreTimes()->with(false)->andReturn(777);
         CoreFunction::mock("abc")->zeroOrMoreTimes()->with(false)->andReturn(888);
@@ -62,7 +62,7 @@ class DifferentReturnValuesTest extends TestCase
     }
 
 
-    public function testOnce()
+    public function testOnce(): void
     {
         CoreFunction::mock("abc")->once()->with(88)->andReturn(777);
         CoreFunction::mock("abc")->once()->with(88)->andReturn(888);
@@ -71,7 +71,7 @@ class DifferentReturnValuesTest extends TestCase
     }
 
 
-    public function testOnceTooMany()
+    public function testOnceTooMany(): void
     {
         CoreFunction::mock("abc")->once()->with(false)->andReturn(777);
         CoreFunction::mock("abc")->once()->with(false)->andReturn(888);
@@ -84,7 +84,7 @@ class DifferentReturnValuesTest extends TestCase
     }
 
 
-    public function testOnceNotEnough()
+    public function testOnceNotEnough(): void
     {
         CoreFunction::mock("abc")->once()->with(0)->andReturn(777);
         CoreFunction::mock("abc")->once()->with(0)->andReturn(888);
@@ -96,7 +96,7 @@ class DifferentReturnValuesTest extends TestCase
     }
 
 
-    public function testTwice()
+    public function testTwice(): void
     {
         CoreFunction::mock("abc")->twice()->with([])->andReturn(777);
         CoreFunction::mock("abc")->twice()->with([])->andReturn(888);
@@ -107,7 +107,7 @@ class DifferentReturnValuesTest extends TestCase
     }
 
 
-    public function testTwiceTooMany()
+    public function testTwiceTooMany(): void
     {
         CoreFunction::mock("abc")->twice()->with(-1)->andReturn(777);
         CoreFunction::mock("abc")->twice()->with(-1)->andReturn(888);
@@ -122,7 +122,7 @@ class DifferentReturnValuesTest extends TestCase
     }
 
 
-    public function testTwiceNotEnough()
+    public function testTwiceNotEnough(): void
     {
         CoreFunction::mock("abc")->twice()->with("")->andReturn(777);
         CoreFunction::mock("abc")->twice()->with("")->andReturn(888);
@@ -136,7 +136,7 @@ class DifferentReturnValuesTest extends TestCase
     }
 
 
-    public function testNever()
+    public function testNever(): void
     {
         CoreFunction::mock("abc")->never()->with(null)->andReturn(777);
         CoreFunction::mock("abc")->never()->with(null)->andReturn(888);
@@ -145,7 +145,7 @@ class DifferentReturnValuesTest extends TestCase
     }
 
 
-    public function testNeverTooMany()
+    public function testNeverTooMany(): void
     {
         CoreFunction::mock("abc")->never()->with(true)->andReturn(777);
         CoreFunction::mock("abc")->never()->with(true)->andReturn(888);

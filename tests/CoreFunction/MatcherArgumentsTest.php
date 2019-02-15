@@ -10,13 +10,13 @@ use function abc;
 class MatcherArgumentsTest extends TestCase
 {
 
-    public function tearDown()
+    public function tearDown(): void
     {
         CoreFunction::close();
     }
 
 
-    public function testDefault()
+    public function testDefault(): void
     {
         CoreFunction::mock("abc")->with(\Mockery::any())->andReturn(777);
         CoreFunction::mock("abc")->with("specific")->andReturn(888);
@@ -26,7 +26,7 @@ class MatcherArgumentsTest extends TestCase
     }
 
 
-    public function testDefaultTooMany()
+    public function testDefaultTooMany(): void
     {
         CoreFunction::mock("abc")->with(\Mockery::any())->andReturn(777);
         $this->assertSame(777, abc("seven"));
@@ -37,7 +37,7 @@ class MatcherArgumentsTest extends TestCase
     }
 
 
-    public function testDefaultNotEnough()
+    public function testDefaultNotEnough(): void
     {
         CoreFunction::mock("abc")->with(\Mockery::any())->andReturn(777);
         CoreFunction::mock("abc")->with("-8")->andReturn(888);
@@ -49,7 +49,7 @@ class MatcherArgumentsTest extends TestCase
     }
 
 
-    public function testZeroOrMoreTimes()
+    public function testZeroOrMoreTimes(): void
     {
         CoreFunction::mock("abc")->zeroOrMoreTimes()->with(\Mockery::any())->andReturn(777);
         CoreFunction::mock("abc")->zeroOrMoreTimes()->with(null)->andReturn(888);
@@ -60,7 +60,7 @@ class MatcherArgumentsTest extends TestCase
     }
 
 
-    public function testOnce()
+    public function testOnce(): void
     {
         CoreFunction::mock("abc")->once()->with(88)->andReturn(888);
         CoreFunction::mock("abc")->once()->with(\Mockery::any())->andReturn(777);
@@ -69,7 +69,7 @@ class MatcherArgumentsTest extends TestCase
     }
 
 
-    public function testOnceTooMany()
+    public function testOnceTooMany(): void
     {
         CoreFunction::mock("abc")->once()->with(7)->andReturn(777);
         CoreFunction::mock("abc")->once()->with(\Mockery::any())->andReturn(888);
@@ -82,7 +82,7 @@ class MatcherArgumentsTest extends TestCase
     }
 
 
-    public function testOnceNotEnough()
+    public function testOnceNotEnough(): void
     {
         CoreFunction::mock("abc")->once()->with("sev", \Mockery::any())->andReturn(777);
         CoreFunction::mock("abc")->once()->with("eig")->andReturn(888);
@@ -94,7 +94,7 @@ class MatcherArgumentsTest extends TestCase
     }
 
 
-    public function testUnexpectedArguments()
+    public function testUnexpectedArguments(): void
     {
         CoreFunction::mock("abc")->with(\Mockery::any())->andReturn(777);
         CoreFunction::mock("abc")->with([8])->andReturn(888);

@@ -11,13 +11,13 @@ use function abc;
 class OptionalArgumentsTest extends TestCase
 {
 
-    public function tearDown()
+    public function tearDown(): void
     {
         CoreFunction::close();
     }
 
 
-    public function testDefault()
+    public function testDefault(): void
     {
         CoreFunction::mock("exec")->with("ls")->andReturn(777);
         $this->assertSame(777, exec("ls"));
@@ -28,7 +28,7 @@ class OptionalArgumentsTest extends TestCase
     }
 
 
-    public function testOneOptional()
+    public function testOneOptional(): void
     {
         CoreFunction::mock("exec")->with("ls", null)->andReturn(777);
         $this->assertSame(777, exec("ls", $extra));
