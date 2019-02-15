@@ -28,5 +28,13 @@
     "autoload-dev": {
         "files": ["tests/functions.php"],
         "psr-4": {"duncan3dc\\MockTests\\": "tests/"}
+    },
+    "scripts": {
+        "test": [
+            "vendor/bin/phpunit",
+            "vendor/bin/composer-require-checker",
+            "vendor/bin/phpstan analyse --level=max src tests",
+            "vendor/bin/phpcs --standard=phpcs.xml src tests"
+        ]
     }
 }
