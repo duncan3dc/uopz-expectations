@@ -15,7 +15,6 @@ env:
 
 install:
   - pecl install uopz
-  - composer self-update --snapshot
   - composer update $COMPOSER_OPTS
 
 script:
