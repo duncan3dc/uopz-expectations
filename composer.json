@@ -18,12 +18,14 @@
     },
     "require-dev": {
         "maglnet/composer-require-checker": "^1.1",
+        "phpstan/phpstan": "^0.11.2",
         "phpunit/phpunit": "^8.0"
     },
     "autoload": {
         "psr-4": {"duncan3dc\\Mock\\": "src/"}
     },
     "autoload-dev": {
+        "files": ["tests/functions.php"],
         "psr-4": {"duncan3dc\\MockTests\\": "tests/"}
     }
 }

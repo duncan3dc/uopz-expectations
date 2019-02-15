@@ -148,4 +148,14 @@ class ArgumentsTest extends TestCase
         $result = (string) $arguments;
         $this->assertSame("1, UNKNOWN, 3", $result);
     }
+
+
+    public function testCanAccept1(): void
+    {
+        $input = [1, "two", 3];
+        $arguments = new Arguments($input);
+
+        $result = $arguments->canAccept(new Arguments());
+        $this->assertFalse($result);
+    }
 }

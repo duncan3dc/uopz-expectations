@@ -85,6 +85,9 @@ final class Arguments
         }
 
         $values = $arguments->getValues();
+        if ($values === null) {
+            return false;
+        }
 
         if (count($this->values) !== count($values)) {
             return false;
@@ -137,6 +140,7 @@ final class Arguments
             }
 
             if (is_numeric($value)) {
+                $value = (string) $value;
                 if (strlen($value) > 8) {
                     $value = substr($value, 0, 5) . "...";
                 }
