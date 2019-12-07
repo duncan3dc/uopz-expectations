@@ -5,6 +5,7 @@ namespace duncan3dc\MockTests\CoreFunction;
 use duncan3dc\Mock\CoreFunction;
 use duncan3dc\Mock\Exceptions\ExpectationException;
 use PHPUnit\Framework\TestCase;
+
 use function abc;
 
 class DifferentArgumentsTest extends TestCase

@@ -2,8 +2,6 @@
 
 namespace duncan3dc\Mock;
 
-use function array_slice;
-use function func_num_args;
 use ReflectionFunction;
 use ReflectionParameter;
 

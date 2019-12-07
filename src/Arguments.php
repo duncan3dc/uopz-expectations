@@ -3,6 +3,7 @@
 namespace duncan3dc\Mock;
 
 use Mockery\Matcher\MatcherAbstract;
+
 use function count;
 use function get_class;
 use function is_array;

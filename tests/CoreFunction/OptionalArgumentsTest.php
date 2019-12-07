@@ -6,6 +6,7 @@ use duncan3dc\Mock\CoreFunction;
 use duncan3dc\Mock\Exceptions\ExpectationException;
 use Mockery;
 use PHPUnit\Framework\TestCase;
+
 use function abc;
 
 class OptionalArgumentsTest extends TestCase

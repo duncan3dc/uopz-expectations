@@ -3,6 +3,7 @@
 namespace duncan3dc\Mock;
 
 use duncan3dc\Mock\Exceptions\ExpectationException;
+
 use function array_filter;
 use function uopz_set_return;
 use function uopz_unset_return;
