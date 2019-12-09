@@ -5,6 +5,18 @@ Changelog
 
 --------
 
+## 0.4.0 - 2019-12-09
+
+### Fixed
+
+* [CoreFunction] Ensure we only call argument matching closures once.
+
+### Changed
+
+* [Support] Added support for PHP 7.4
+
+--------
+
 ## 0.3.0 - 2019-02-15
 
 ### Fixed
