@@ -10,6 +10,14 @@ use PHPUnit\Framework\TestCase;
 class CoreFunctionTest extends TestCase
 {
 
+
+    /** @inheritDoc */
+    public function tearDown(): void
+    {
+        CoreFunction::close();
+    }
+
+
     public function testClose()
     {
         CoreFunction::mock("abc")->andReturn(123);
