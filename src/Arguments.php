@@ -4,6 +4,7 @@ namespace duncan3dc\Mock;
 
 use Mockery\Matcher\MatcherAbstract;
 
+use function array_key_exists;
 use function count;
 use function get_class;
 use function is_array;
@@ -20,6 +21,9 @@ final class Arguments
      * @var array|null $values The arguments this instance represents.
      */
     private $values;
+
+    /** @var array */
+    private $matchedValues = [];
 
 
     /**
@@ -41,6 +45,21 @@ final class Arguments
     public function getValues(): ?array
     {
         return $this->values;
+    }
+
+
+    /**
+     * Get the previously matched value of an argument.
+     *
+     * @return mixed
+     */
+    public function getMatchedValue(int $index)
+    {
+        if (!array_key_exists($index, $this->matchedValues)) {
+            throw new \RuntimeException("This matcher value hasn't been stored");
+        }
+
+        return $this->matchedValues[$index];
     }
 
 
@@ -103,6 +122,7 @@ final class Arguments
 
             if ($expected instanceof MatcherAbstract) {
                 if ($expected->match($actual)) {
+                    $this->matchedValues[$key] = $actual;
                     continue;
                 }
             }

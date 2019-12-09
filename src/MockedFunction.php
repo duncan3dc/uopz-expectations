@@ -214,8 +214,7 @@ final class MockedFunction
 
         foreach ($matchers as $index => $matcher) {
             if ($matcher instanceof MatcherAbstract) {
-                $value = $values->getValues()[$index];
-                $matcher->match($value);
+                $value = $this->arguments->getMatchedValue($index);
                 $values->setValue($index, $value);
             }
         }

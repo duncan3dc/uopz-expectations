@@ -61,4 +61,24 @@ class CoreFunctionTest extends TestCase
         $this->assertSame(["line1", "line2"], $lines);
         $this->assertSame(17, $status);
     }
+
+
+    /**
+     * Ensure we only call a closure once if it matches.
+     */
+    public function testClosureCallTimes()
+    {
+        $times = 0;
+
+        $parameter = Mockery::on(function ($number) use (&$times) {
+            ++$times;
+            return true;
+        });
+
+        CoreFunction::mock("abc")->with($parameter)->andReturn(456);
+
+        $result = abc(123);
+        $this->assertSame(456, $result);
+        $this->assertSame(1, $times);
+    }
 }
