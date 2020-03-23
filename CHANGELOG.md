@@ -5,6 +5,14 @@ Changelog
 
 --------
 
+## 0.5.0 - 2020-03-23
+
+### Added
+
+* [CoreFunction] Added support for andThrow().
+
+--------
+
 ## 0.4.0 - 2019-12-09
 
 ### Fixed

@@ -28,6 +28,11 @@ final class MockedFunction
     private $return;
 
     /**
+     * @var bool $return The return value of this function.
+     */
+    private $throw = false;
+
+    /**
      * @var int $called How many times this function has been called.
      */
     private $called = 0;
@@ -153,6 +158,13 @@ final class MockedFunction
     }
 
 
+    public function andThrow(\Throwable $exception): MockedFunction
+    {
+        $this->throw = true;
+        return $this->andReturn($exception);
+    }
+
+
     /**
      * Check if the specified arguments are identical to the arguments this function expects.
      *
@@ -209,7 +221,7 @@ final class MockedFunction
         $matchers = $this->arguments->getValues();
 
         if ($matchers === null) {
-            return $this->return;
+            return $this->return();
         }
 
         foreach ($matchers as $index => $matcher) {
@@ -219,6 +231,15 @@ final class MockedFunction
             }
         }
 
+        return $this->return();
+    }
+
+
+    private function return()
+    {
+        if ($this->throw) {
+            throw $this->return;
+        }
         return $this->return;
     }
 
