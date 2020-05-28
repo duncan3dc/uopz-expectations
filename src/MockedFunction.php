@@ -33,6 +33,11 @@ final class MockedFunction
     private $throw = false;
 
     /**
+     * @var bool $callback Whether the return value of this function is a callback or not.
+     */
+    private $callback = false;
+
+    /**
      * @var int $called How many times this function has been called.
      */
     private $called = 0;
@@ -158,6 +163,20 @@ final class MockedFunction
     }
 
 
+    /**
+     * Set a callback to use to figure out the value this function should return.
+     *
+     * @param callable $callback
+     *
+     * @return $this
+     */
+    public function andReturnUsing(callable $callback): MockedFunction
+    {
+        $this->callback = true;
+        return $this->andReturn($callback);
+    }
+
+
     public function andThrow(\Throwable $exception): MockedFunction
     {
         $this->throw = true;
@@ -221,7 +240,7 @@ final class MockedFunction
         $matchers = $this->arguments->getValues();
 
         if ($matchers === null) {
-            return $this->return();
+            return $this->return($values);
         }
 
         foreach ($matchers as $index => $matcher) {
@@ -231,15 +250,24 @@ final class MockedFunction
             }
         }
 
-        return $this->return();
+        return $this->return($values);
     }
 
 
-    private function return()
+    private function return(Arguments $arguments)
     {
         if ($this->throw) {
             throw $this->return;
         }
+
+        if ($this->callback) {
+            $values = $arguments->getValues();
+            if ($values === null) {
+                $values = [];
+            }
+            return ($this->return)(...$values);
+        }
+
         return $this->return;
     }
 
