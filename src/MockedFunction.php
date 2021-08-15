@@ -28,7 +28,7 @@ final class MockedFunction
     private $return;
 
     /**
-     * @var bool $return The return value of this function.
+     * @var bool $throw Whether this function should throw an exception or not.
      */
     private $throw = false;
 
@@ -254,6 +254,9 @@ final class MockedFunction
     }
 
 
+    /**
+     * @return mixed
+     */
     private function return(Arguments $arguments)
     {
         if ($this->throw) {

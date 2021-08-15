@@ -18,18 +18,18 @@ use function substr;
 final class Arguments
 {
     /**
-     * @var array|null $values The arguments this instance represents.
+     * @var array<int,mixed>|null $values The arguments this instance represents.
      */
     private $values;
 
-    /** @var array */
+    /** @var array<int,mixed> */
     private $matchedValues = [];
 
 
     /**
      * Create a new instance.
      *
-     * @param array $values The arguments this instance represents.
+     * @param array<int,mixed> $values The arguments this instance represents.
      */
     public function __construct(array &$values = null)
     {
@@ -40,7 +40,7 @@ final class Arguments
     /**
      * Get the values these arguments represent.
      *
-     * @return array|null
+     * @return array<int,mixed>|null
      */
     public function getValues(): ?array
     {
@@ -65,6 +65,8 @@ final class Arguments
 
     /**
      * Update the value of one of the arguments.
+     *
+     * @param mixed $value
      *
      * @return void
      */

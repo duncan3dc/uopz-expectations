@@ -13,7 +13,7 @@ class ClosureGenerator
     private $function;
 
     /**
-     * @var array|null
+     * @var array<mixed>|null
      */
     private $arguments;
 

@@ -18,7 +18,7 @@ class CoreFunctionTest extends TestCase
     }
 
 
-    public function testClose()
+    public function testClose(): void
     {
         CoreFunction::mock("abc")->andReturn(123);
         $this->assertSame(123, abc("xyz"));
@@ -28,7 +28,7 @@ class CoreFunctionTest extends TestCase
     }
 
 
-    public function testUnexpectedArgumentList()
+    public function testUnexpectedArgumentList(): void
     {
         CoreFunction::mock("abc")->with(777)->andReturn(77777);
         $this->assertSame(77777, abc(777));
@@ -39,7 +39,7 @@ class CoreFunctionTest extends TestCase
     }
 
 
-    public function testReferences()
+    public function testReferences(): void
     {
         $lines = Mockery::on(function (&$lines) {
             $lines = ["line1", "line2"];
@@ -66,7 +66,7 @@ class CoreFunctionTest extends TestCase
     /**
      * Ensure we only call a closure once if it matches.
      */
-    public function testClosureCallTimes()
+    public function testClosureCallTimes(): void
     {
         $times = 0;
 
