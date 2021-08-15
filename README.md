@@ -5,7 +5,7 @@ Full documentation is available at http://duncan3dc.github.io/uopz-expectations/
 PHPDoc API documentation is also available at [http://duncan3dc.github.io/uopz-expectations/api/](http://duncan3dc.github.io/uopz-expectations/api/namespaces/duncan3dc.Mock.html)  
 
 [![release](https://poser.pugx.org/duncan3dc/uopz-expectations/version.svg)](https://packagist.org/packages/duncan3dc/uopz-expectations)
-[![build](https://travis-ci.org/duncan3dc/uopz-expectations.svg?branch=master)](https://travis-ci.org/duncan3dc/uopz-expectations)
+[![build](https://github.com/duncan3dc/uopz-expectations/workflows/.github/workflows/buildcheck.yml/badge.svg?branch=master)](https://github.com/duncan3dc/uopz-expectations/actions?query=branch%3Amaster+workflow%3A.github%2Fworkflows%2Fbuildcheck.yml)
 [![coverage](https://codecov.io/gh/duncan3dc/uopz-expectations/graph/badge.svg)](https://codecov.io/gh/duncan3dc/uopz-expectations)
 
 
