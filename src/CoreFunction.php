@@ -78,10 +78,27 @@ final class CoreFunction
             }
         }
 
-        # Finally try functions that expect any arguments (just so we can throw an error as there are no expectations left)
+        # Then try functions that expect any arguments (just so we can throw an error as there are no expectations left)
         foreach ($mocks as $mock) {
             if ($mock->canAcceptArguments($arguments)) {
                 return $mock->call($arguments);
+            }
+        }
+
+        # Finally see if this function is supposed to fallback to default
+        foreach ($mocks as $mock) {
+            if ($mock->shouldFallbackToDefault()) {
+                $return = uopz_get_return($mock->getFunctionName());
+                uopz_unset_return($mock->getFunctionName());
+
+                $values = $arguments->getValues();
+                if ($values === null) {
+                    $values = [];
+                }
+                $result = ($mock->getFunctionName())(...$values);
+
+                uopz_set_return($mock->getFunctionName(), $return);
+                return $result;
             }
         }
 

@@ -38,6 +38,11 @@ final class MockedFunction
     private $callback = false;
 
     /**
+     * @var bool $fallback Whether this function should fallback to the default if the arguments don't match.
+     */
+    private $fallback = false;
+
+    /**
      * @var int $called How many times this function has been called.
      */
     private $called = 0;
@@ -181,6 +186,19 @@ final class MockedFunction
     {
         $this->throw = true;
         return $this->andReturn($exception);
+    }
+
+
+    public function fallbackToDefault(): MockedFunction
+    {
+        $this->fallback = true;
+        return $this;
+    }
+
+
+    public function shouldFallbackToDefault(): bool
+    {
+        return $this->fallback;
     }
 
 
