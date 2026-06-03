@@ -10,7 +10,6 @@ use function implode;
 
 class ReturnUsingTest extends TestCase
 {
-
     public function tearDown(): void
     {
         CoreFunction::close();

@@ -10,7 +10,6 @@ use function abc;
 
 class DifferentArgumentsTest extends TestCase
 {
-
     public function tearDown(): void
     {
         CoreFunction::close();

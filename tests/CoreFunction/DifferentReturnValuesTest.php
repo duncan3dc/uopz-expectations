@@ -10,7 +10,6 @@ use function abc;
 
 class DifferentReturnValuesTest extends TestCase
 {
-
     public function tearDown(): void
     {
         CoreFunction::close();

@@ -7,7 +7,6 @@ use PHPUnit\Framework\TestCase;
 
 class ArgumentsTest extends TestCase
 {
-
     public function tearDown(): void
     {
         uopz_unset_return("is_string");

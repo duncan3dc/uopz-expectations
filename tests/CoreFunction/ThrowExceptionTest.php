@@ -9,7 +9,6 @@ use function abc;
 
 class ThrowExceptionTest extends TestCase
 {
-
     public function tearDown(): void
     {
         CoreFunction::close();

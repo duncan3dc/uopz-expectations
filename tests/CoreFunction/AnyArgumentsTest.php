@@ -10,7 +10,6 @@ use function time;
 
 class AnyArgumentsTest extends TestCase
 {
-
     public function tearDown(): void
     {
         CoreFunction::close();

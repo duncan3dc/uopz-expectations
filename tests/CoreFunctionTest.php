@@ -9,8 +9,6 @@ use PHPUnit\Framework\TestCase;
 
 class CoreFunctionTest extends TestCase
 {
-
-
     /** @inheritDoc */
     public function tearDown(): void
     {

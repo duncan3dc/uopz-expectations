@@ -10,7 +10,6 @@ use function time;
 
 class NoArgumentsTest extends TestCase
 {
-
     public function tearDown(): void
     {
         CoreFunction::close();

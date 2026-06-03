@@ -37,7 +37,7 @@ jobs:
         run: docker exec ci vendor/bin/phpstan analyse --level=max src tests
 
       - name: Coding Standards
-        run: docker exec ci vendor/bin/phpcs src tests
+        run: docker exec ci vendor/bin/phpcs
 
       - name: Composer Validate
         run: docker exec ci composer validate --strict

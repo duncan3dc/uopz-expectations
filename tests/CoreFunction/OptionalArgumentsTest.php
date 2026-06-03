@@ -11,7 +11,6 @@ use function abc;
 
 class OptionalArgumentsTest extends TestCase
 {
-
     public function tearDown(): void
     {
         CoreFunction::close();
