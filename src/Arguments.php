@@ -29,9 +29,9 @@ final class Arguments
     /**
      * Create a new instance.
      *
-     * @param array<int,mixed> $values The arguments this instance represents.
+     * @param ?array<int,mixed> $values The arguments this instance represents.
      */
-    public function __construct(array &$values = null)
+    public function __construct(?array &$values = null)
     {
         $this->values = $values;
     }
