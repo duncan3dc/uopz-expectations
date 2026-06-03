@@ -14,7 +14,7 @@
     "require": {
         "mockery/mockery": "^1.0",
         "ext-uopz": "*",
-        "php": "^7.2 || ^8.0"
+        "php": "^7.3 || ^8.0"
     },
     "require-dev": {
         "maglnet/composer-require-checker": "^2.0 || ^3.0",
